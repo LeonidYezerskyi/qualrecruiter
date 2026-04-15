@@ -67,9 +67,11 @@ export function ResultsYouCanExpectSection() {
               </motion.div>
               <motion.h2
                 variants={item}
-                className={`${playfair.className} text-accent-gradient max-w-5xl text-pretty text-[2.75rem] font-medium leading-tight tracking-tight md:text-[3rem] xl:whitespace-nowrap`}
+                className={`${playfair.className} text-accent-gradient max-w-5xl text-pretty text-[2.75rem] font-medium leading-tight tracking-tight md:text-[3rem]`}
               >
-                Smoother Fieldwork. More Meaningful Insights.
+                Smoother Fieldwork.
+                <br />
+                More Meaningful Insights.
               </motion.h2>
               <motion.p
                 variants={item}

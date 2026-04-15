@@ -58,7 +58,9 @@ export function WhoWeServeSection() {
             variants={item}
             className={`${playfair.className} text-accent-gradient max-w-4xl text-pretty text-[2.75rem] font-medium leading-tight tracking-tight md:text-[3rem]`}
           >
-            Built for Agencies, Brands, and Insights Teams
+            Built for Agencies,
+            <br />
+            Brands, and Insights Teams
           </motion.h2>
           <motion.p
             variants={item}
