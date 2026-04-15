@@ -86,14 +86,8 @@ export function Hero() {
                 everyday consumers, we deliver participants who match your exact
                 criteria — reliably and on time.
               </motion.p>
-              <motion.div
-                variants={heroContentItem}
-                className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:items-center"
-              >
+              <motion.div variants={heroContentItem} className="pt-2">
                 <Button variant="primary" href={MAILTO}>
-                  Start your recruitment
-                </Button>
-                <Button variant="secondary" href={MAILTO}>
                   Start a Conversation
                 </Button>
               </motion.div>

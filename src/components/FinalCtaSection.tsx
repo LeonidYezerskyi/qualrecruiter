@@ -46,14 +46,8 @@ export function FinalCtaSection() {
             have a detailed screener ready or just a rough idea, we&apos;re here to
             help scope your project and make it happen — reliably and on time.
           </motion.p>
-          <motion.div
-            variants={item}
-            className="flex flex-col gap-4 pt-2 sm:flex-row sm:flex-wrap sm:items-center"
-          >
+          <motion.div variants={item} className="pt-2">
             <Button variant="primary" href={mailtoHello}>
-              Start your recruitment
-            </Button>
-            <Button variant="secondary" href={mailtoHello}>
               Start a Conversation
             </Button>
           </motion.div>
