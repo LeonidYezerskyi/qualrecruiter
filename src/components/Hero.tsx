@@ -29,9 +29,9 @@ export function Hero() {
       <div className="relative z-10 flex min-h-screen items-center pt-24 pb-16 md:pt-28 md:pb-20">
         <Container>
           <div className="mx-auto w-full max-w-[1100px]">
-            <div className="max-w-xl space-y-6 text-left lg:max-w-2xl lg:space-y-8">
+            <div className="max-w-2xl space-y-6 text-left md:max-w-3xl lg:max-w-5xl lg:space-y-8">
               <h1
-                className={`${playfair.className} text-accent-gradient text-balance text-[2.75rem] font-medium leading-[1.12] tracking-tight sm:text-5xl md:text-[3.25rem] lg:text-[4rem] lg:leading-[1.08]`}
+                className={`${playfair.className} text-accent-gradient text-pretty text-[3.25rem] font-medium leading-[1.05] tracking-tight md:text-[3.75rem] lg:text-[4.125rem]`}
               >
                 Recruit qualified research participants in days, not weeks
               </h1>

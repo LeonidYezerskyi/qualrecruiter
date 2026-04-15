@@ -55,7 +55,7 @@ export function ResultsYouCanExpectSection() {
               >
                 Smoother Fieldwork. More Meaningful Insights.
               </h2>
-              <p className="max-w-[70%] text-pretty text-base font-semibold leading-relaxed text-white md:text-lg">
+              <p className="max-w-[70%] text-pretty text-base font-normal leading-relaxed text-white md:text-lg">
                 When recruitment is done right, everything downstream improves.
                 Here&apos;s what clients consistently experience when they work with
                 QualRecruiter.
@@ -69,7 +69,7 @@ export function ResultsYouCanExpectSection() {
                     <h3 className="text-lg font-semibold leading-snug text-accent-gradient">
                       {item.title}
                     </h3>
-                    <p className="text-sm font-normal leading-relaxed text-white">
+                    <p className="text-base font-normal leading-relaxed text-white">
                       {item.description}
                     </p>
                   </div>

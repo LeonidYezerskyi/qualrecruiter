@@ -8,9 +8,37 @@ const inter = Inter({
   display: "swap",
 });
 
+function siteOrigin(): string {
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return process.env.NEXT_PUBLIC_SITE_URL;
+  }
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  if (process.env.NODE_ENV === "production") {
+    return "https://qualrecruiter.us";
+  }
+  return "http://localhost:3000";
+}
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteOrigin()),
   title: "QualRecruiter",
   description: "Qualitative research recruitment",
+  icons: {
+    apple: [{ url: "/logo.png", type: "image/png" }],
+  },
+  openGraph: {
+    title: "QualRecruiter",
+    description: "Qualitative research recruitment",
+    images: [{ url: "/logo.png", type: "image/png" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "QualRecruiter",
+    description: "Qualitative research recruitment",
+    images: ["/logo.png"],
+  },
 };
 
 export default function RootLayout({

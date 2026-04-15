@@ -55,7 +55,7 @@ export function WhyQualRecruiterSection() {
               >
                 Fewer no-shows. Better conversations. Stronger insights.
               </h2>
-              <p className="max-w-[60%] text-pretty text-base font-semibold leading-relaxed text-white md:text-lg">
+              <p className="max-w-[60%] text-pretty text-base font-normal leading-relaxed text-white md:text-lg">
                 We don&apos;t just fill quotas. We carefully match participants to your
                 research goals, using rigorous screening and a commitment to clear
                 communication at every stage of the project.
@@ -66,10 +66,10 @@ export function WhyQualRecruiterSection() {
               {features.map((feature) => (
                 <li key={feature.title}>
                   <div className="flex h-full flex-col space-y-3 rounded-[4px] border border-white/[0.08] bg-[#333333] p-6 shadow-none">
-                    <h3 className="text-lg font-semibold text-accent-gradient">
+                    <h3 className="text-lg font-semibold leading-snug text-accent-gradient">
                       {feature.title}
                     </h3>
-                    <p className="text-[15px] font-normal leading-relaxed text-white">
+                    <p className="text-base font-normal leading-relaxed text-muted">
                       {feature.description}
                     </p>
                   </div>

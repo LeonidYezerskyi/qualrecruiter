@@ -44,7 +44,7 @@ export function WhoWeServeSection() {
           >
             Built for Agencies, Brands, and Insights Teams
           </h2>
-          <p className="max-w-[75%] text-pretty text-base font-semibold leading-relaxed text-white md:text-lg">
+          <p className="max-w-[75%] text-pretty text-base font-normal leading-relaxed text-white md:text-lg">
             QualRecruiter partners with organizations across the U.S. that depend on
             high-quality qualitative research — from boutique research agencies to
             in-house insights teams at major brands.
@@ -64,10 +64,10 @@ export function WhoWeServeSection() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
-                <h3 className="mt-4 text-lg font-semibold leading-snug text-white">
+                <h3 className="mt-4 text-lg font-semibold leading-snug text-accent-gradient">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-sm font-normal leading-relaxed text-muted">
+                <p className="mt-1 text-base font-normal leading-relaxed text-muted">
                   {item.description}
                 </p>
               </div>

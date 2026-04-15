@@ -38,13 +38,13 @@ export function TestimonialStatsSection() {
             <div className="accent-bar-y shrink-0" aria-hidden />
             <blockquote className="min-w-0 flex-1 m-0 border-0 p-0">
               <p
-                className={`${playfair.className} text-accent-gradient text-pretty text-[37px] font-normal italic leading-[1.4] tracking-tight md:text-[40px]`}
+                className={`${playfair.className} text-accent-gradient text-pretty text-[2.75rem] font-normal italic leading-tight tracking-tight md:text-[3rem]`}
               >
                 &quot;Great partner throughout the entire project — flexible,
                 responsive, and delivered exactly the participants we
                 needed.&quot;
               </p>
-              <footer className="mt-4 text-[19px] font-normal leading-normal text-muted">
+              <footer className="mt-4 text-sm font-normal leading-normal text-muted">
                 — Research Director, Insights Agency
               </footer>
             </blockquote>
@@ -61,14 +61,14 @@ export function TestimonialStatsSection() {
                 }`}
               >
                 <p
-                  className={`${playfair.className} text-[56px] font-bold leading-none tracking-tight text-white`}
+                  className={`${playfair.className} text-[2.75rem] font-bold leading-none tracking-tight text-white md:text-[3rem]`}
                 >
                   {stat.value}
                 </p>
                 <p className="mt-2 text-base font-medium leading-snug text-muted">
                   {stat.label}
                 </p>
-                <p className="mt-2 max-w-[200px] text-center text-[13px] font-normal leading-relaxed text-[#888888]">
+                <p className="mt-2 max-w-[200px] text-center text-sm font-normal leading-relaxed text-muted/80">
                   {stat.description}
                 </p>
               </div>

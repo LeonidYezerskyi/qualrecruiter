@@ -46,11 +46,11 @@ export function OurApproachSection() {
               <div className="rounded-[4px] p-px accent-ring-bg">
                 <div className="rounded-[3px] bg-page p-6">
                 <h3
-                  className={`${playfair.className} text-accent-gradient text-[22px] font-normal leading-snug`}
+                  className={`${playfair.className} text-accent-gradient text-lg font-semibold leading-snug`}
                 >
                   How We Source
                 </h3>
-                <p className="mt-4 text-[15px] font-normal leading-relaxed text-muted">
+                <p className="mt-4 text-base font-normal leading-relaxed text-muted">
                   We combine modern digital recruitment methods with proven traditional
                   sourcing techniques and a trusted network of research partners —
                   ensuring consistent quality across every project type and audience.
@@ -75,7 +75,7 @@ export function OurApproachSection() {
                         <p className="text-lg font-semibold leading-snug text-accent-gradient">
                           {item.title}
                         </p>
-                        <p className="mt-1.5 text-sm font-normal leading-relaxed text-white">
+                        <p className="mt-1.5 text-base font-normal leading-relaxed text-muted">
                           {item.description}
                         </p>
                       </div>
