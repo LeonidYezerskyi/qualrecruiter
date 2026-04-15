@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import { Playfair_Display } from "next/font/google";
 import { AccentPill } from "./AccentPill";
 import { Container } from "./Container";
+import { FadeInView } from "./motion/FadeInView";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export function OurApproachSection() {
   return (
     <section className="bg-page py-20">
       <Container>
+        <FadeInView>
         <div className="mx-auto w-full max-w-[1100px] text-left">
           <div className="space-y-5 md:space-y-6">
             <AccentPill>OUR APPROACH</AccentPill>
@@ -86,6 +88,7 @@ export function OurApproachSection() {
             </div>
           </div>
         </div>
+        </FadeInView>
       </Container>
     </section>
   );

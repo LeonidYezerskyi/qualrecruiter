@@ -4,6 +4,7 @@ import type { LucideIcon } from "lucide-react";
 import { Playfair_Display } from "next/font/google";
 import { AccentPill } from "./AccentPill";
 import { Container } from "./Container";
+import { FadeInView } from "./motion/FadeInView";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -34,6 +35,7 @@ export function HowItWorksSection() {
   return (
     <section className="bg-page py-20">
       <Container>
+        <FadeInView>
         <div className="mx-auto w-full max-w-[1100px] text-left">
           <div className="space-y-5 md:space-y-6">
             <AccentPill variant="solid">HOW IT WORKS</AccentPill>
@@ -78,6 +80,7 @@ export function HowItWorksSection() {
             running great research.
           </p>
         </div>
+        </FadeInView>
       </Container>
     </section>
   );

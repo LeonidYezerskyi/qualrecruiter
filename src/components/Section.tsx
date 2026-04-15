@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Container } from "./Container";
+import { FadeInView } from "./motion/FadeInView";
 
 type SectionTone = "default" | "muted";
 
@@ -17,7 +18,9 @@ const toneClasses: Record<SectionTone, string> = {
 export function Section({ children, tone = "default", id }: SectionProps) {
   return (
     <section id={id} className={`py-24 md:py-32 lg:py-36 ${toneClasses[tone]}`}>
-      <Container>{children}</Container>
+      <Container>
+        <FadeInView>{children}</FadeInView>
+      </Container>
     </section>
   );
 }

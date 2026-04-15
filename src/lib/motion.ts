@@ -1,0 +1,2 @@
+/** Premium easing — smooth deceleration, no overshoot */
+export const easePremium = [0.16, 1, 0.3, 1] as const;

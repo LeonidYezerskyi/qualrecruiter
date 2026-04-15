@@ -2,6 +2,7 @@ import { Playfair_Display } from "next/font/google";
 import { AccentPill } from "./AccentPill";
 import { Button } from "./Button";
 import { Container } from "./Container";
+import { FadeInView } from "./motion/FadeInView";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -15,6 +16,7 @@ export function FinalCtaSection() {
   return (
     <section className="border-t border-white/10 bg-page py-24 md:py-32 lg:py-40">
       <Container>
+        <FadeInView>
         <div className="mx-auto w-full max-w-[1100px] space-y-5 text-left md:space-y-6">
           <AccentPill variant="solid">GET STARTED</AccentPill>
           <h2
@@ -36,6 +38,7 @@ export function FinalCtaSection() {
             </Button>
           </div>
         </div>
+        </FadeInView>
       </Container>
     </section>
   );

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Playfair_Display } from "next/font/google";
 import { AccentPill } from "./AccentPill";
 import { Container } from "./Container";
+import { FadeInView } from "./motion/FadeInView";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -47,6 +48,7 @@ export function WhyQualRecruiterSection() {
       <div className="photo-scrim absolute inset-0" aria-hidden />
       <div className="relative z-10">
         <Container>
+          <FadeInView>
           <div className="mx-auto w-full max-w-[1100px] space-y-10 text-left md:space-y-12">
             <div className="space-y-5 md:space-y-6">
               <AccentPill>WHY QUALRECRUITER</AccentPill>
@@ -77,6 +79,7 @@ export function WhyQualRecruiterSection() {
               ))}
             </ul>
           </div>
+          </FadeInView>
         </Container>
       </div>
     </section>

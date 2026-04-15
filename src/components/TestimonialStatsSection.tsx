@@ -1,5 +1,6 @@
 import { Playfair_Display } from "next/font/google";
 import { Container } from "./Container";
+import { FadeInView } from "./motion/FadeInView";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export function TestimonialStatsSection() {
   return (
     <section className="bg-page py-[80px]">
       <Container>
+        <FadeInView>
         <div className="mx-auto w-full max-w-[1100px]">
           <div className="flex items-stretch gap-8">
             <div className="accent-bar-y shrink-0" aria-hidden />
@@ -75,6 +77,7 @@ export function TestimonialStatsSection() {
             ))}
           </div>
         </div>
+        </FadeInView>
       </Container>
     </section>
   );
