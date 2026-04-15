@@ -1,5 +1,9 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { Playfair_Display } from "next/font/google";
+import { scrollStaggerVariants, scrollStaggerViewport } from "@/lib/motion";
 import { AccentPill } from "./AccentPill";
 import { Section } from "./Section";
 
@@ -34,47 +38,62 @@ const audiences = [
 ] as const;
 
 export function WhoWeServeSection() {
+  const reduceMotion = useReducedMotion() === true;
+  const { container, item } = scrollStaggerVariants(reduceMotion);
+
   return (
     <Section tone="muted">
-      <div className="mx-auto w-full max-w-[1100px] text-left">
+      <motion.div
+        className="mx-auto w-full max-w-[1100px] text-left"
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={scrollStaggerViewport}
+      >
         <div className="space-y-5 md:space-y-6">
-          <AccentPill tone="surface">WHO WE SERVE</AccentPill>
-          <h2
+          <motion.div variants={item}>
+            <AccentPill tone="surface">WHO WE SERVE</AccentPill>
+          </motion.div>
+          <motion.h2
+            variants={item}
             className={`${playfair.className} text-accent-gradient max-w-4xl text-pretty text-[2.75rem] font-medium leading-tight tracking-tight md:text-[3rem]`}
           >
             Built for Agencies, Brands, and Insights Teams
-          </h2>
-          <p className="max-w-[75%] text-pretty text-base font-normal leading-relaxed text-white md:text-lg">
+          </motion.h2>
+          <motion.p
+            variants={item}
+            className="max-w-[75%] text-pretty text-base font-normal leading-relaxed text-white md:text-lg"
+          >
             QualRecruiter partners with organizations across the U.S. that depend on
             high-quality qualitative research — from boutique research agencies to
             in-house insights teams at major brands.
-          </p>
+          </motion.p>
         </div>
 
         <ul className="mt-10 grid list-none grid-cols-1 gap-8 md:mt-12 md:grid-cols-3 md:gap-6 lg:gap-8">
-          {audiences.map((item) => (
-            <li key={item.title} className="min-w-0">
+          {audiences.map((audience) => (
+            <motion.li key={audience.title} variants={item} className="min-w-0">
               <div className="flex flex-col items-stretch text-left">
                 <div className="relative h-[140px] w-full overflow-hidden rounded-[4px]">
                   <Image
-                    src={item.image}
-                    alt={item.imageAlt}
+                    src={audience.image}
+                    alt={audience.imageAlt}
                     fill
                     className="object-cover object-center"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
                 <h3 className="mt-4 text-lg font-semibold leading-snug text-accent-gradient">
-                  {item.title}
+                  {audience.title}
                 </h3>
                 <p className="mt-1 text-base font-normal leading-relaxed text-muted">
-                  {item.description}
+                  {audience.description}
                 </p>
               </div>
-            </li>
+            </motion.li>
           ))}
         </ul>
-      </div>
+      </motion.div>
     </Section>
   );
 }
