@@ -34,8 +34,8 @@ export function SiteFooter() {
               <span className="mr-1.5" aria-hidden>
                 ✉️
               </span>
-              <a href="mailto:qualrecruiter@qualrecruiter.us" className={footerMutedLink}>
-                qualrecruiter@qualrecruiter.us
+              <a href="mailto:recruiter@qualrecruiter.us" className={footerMutedLink}>
+                recruiter@qualrecruiter.us
               </a>
             </p>
             </div>

@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
               Privacy Policy
             </h1>
             <p className="mt-3 text-sm font-medium text-muted">
-              Effective Date: January 2025
+              Effective Date: January 2026
             </p>
 
             <p className="mt-8 text-base leading-relaxed text-muted md:text-lg">
@@ -90,8 +90,8 @@ export default function PrivacyPolicyPage() {
                   </li>
                   <li>
                     Contact QualRecruiter at{" "}
-                    <a href="mailto:hello@qualrecruiter.app" className={linkClass}>
-                      hello@qualrecruiter.app
+                    <a href="mailto:recruiter@qualrecruiter.us" className={linkClass}>
+                      recruiter@qualrecruiter.us
                     </a>{" "}
                     for HELP or to STOP receiving messages.
                   </li>
@@ -276,13 +276,13 @@ export default function PrivacyPolicyPage() {
                   United States
                 </p>
                 <p className="mt-3 text-base leading-relaxed text-muted md:text-lg">
-                  <a href="mailto:hello@qualrecruiter.app" className={linkClass}>
-                    hello@qualrecruiter.app
+                  <a href="mailto:recruiter@qualrecruiter.us" className={linkClass}>
+                    recruiter@qualrecruiter.us
                   </a>
                 </p>
                 <p className="mt-2 text-base leading-relaxed text-muted md:text-lg">
-                  <a href="mailto:privacy@qualrecruiter.app" className={linkClass}>
-                    privacy@qualrecruiter.app
+                  <a href="mailto:recruiter@qualrecruiter.us" className={linkClass}>
+                    recruiter@qualrecruiter.us
                   </a>
                   {" — "}
                   privacy inquiries
