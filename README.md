@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# QualRecruiter
 
-## Getting Started
+**QualRecruiter** is a marketing website for a U.S. qualitative research recruitment service. It speaks to research agencies, brands, and in-house insights teams, and presents services, process, social proof, and a clear call to action. The site includes a full landing experience, a dedicated **Privacy Policy** page, and a custom **not found** page.
 
-First, run the development server:
+The interface uses a dark, editorial layout (Playfair Display for headlines, Inter for body copy), with subtle motion on the hero and staggered reveals as visitors scroll through sections.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js** 14 · **React** 18 · **TypeScript**
+- **Tailwind CSS** (custom dark theme, Playfair Display + Inter)
+- **Framer Motion** (hero load + staggered scroll reveals)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure (UI)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**Global:** fixed header with logo (home link), site footer with contact and brand blurb, link to Privacy Policy.
 
-## Learn More
+**Home page (top to bottom):**
 
-To learn more about Next.js, take a look at the following resources:
+1. **Hero** — full-viewport background, main headline, supporting copy, primary CTA.
+2. **What we do (Services)** — qualitative methods grid (interviews, groups, ethnography, communities, mystery shopping, B2B).
+3. **Why QualRecruiter** — value pillars over a photo background.
+4. **How it works** — three-step flow (brief → recruit & screen → fieldwork).
+5. **Our approach** — sourcing story plus bullet list of methods.
+6. **Results you can expect** — outcome cards over a photo background.
+7. **Who we serve** — three audience columns with images (agencies, brands, UX/product).
+8. **Testimonial & stats** — client quote and key numbers.
+9. **Get started (final CTA)** — closing message and CTA.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**Other screens:** Privacy Policy (long-form legal text), Not found (404 with link back home).
