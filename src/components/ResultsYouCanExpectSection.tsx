@@ -10,7 +10,7 @@ const playfair = Playfair_Display({
   weight: ["500", "600", "700"],
 });
 
-const BG_IMAGE = "/images/hero-bg.jpg";
+const BG_IMAGE = "/images/bg-results-expect.jpg";
 
 const items = [
   {
