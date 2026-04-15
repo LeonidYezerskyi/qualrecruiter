@@ -1,4 +1,13 @@
-import { Section } from "./Section";
+import { ArrowRight } from "lucide-react";
+import { Playfair_Display } from "next/font/google";
+import { AccentPill } from "./AccentPill";
+import { Container } from "./Container";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 const items = [
   {
@@ -20,39 +29,64 @@ const items = [
 
 export function OurApproachSection() {
   return (
-    <Section tone="muted">
-      <div className="flex flex-col space-y-10 md:space-y-12">
-        <div className="mx-auto max-w-3xl space-y-4 text-center md:space-y-5">
-          <p className="text-sm font-medium tracking-[0.12em] text-primary/90">
-            Our Approach
-          </p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-gray-950 md:text-4xl">
-            Modern Methods. Proven Results.
-          </h2>
-          <h3 className="text-xl font-semibold text-gray-800 md:text-2xl">
-            How We Source
-          </h3>
-          <p className="mx-auto max-w-[44rem] text-pretty text-base font-normal leading-relaxed text-gray-500 md:text-lg">
-            We combine modern digital recruitment methods with proven traditional
-            sourcing techniques and a trusted network of research partners —
-            ensuring consistent quality across every project type and audience.
-          </p>
-        </div>
-        <ul className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-3 md:gap-6 lg:gap-10">
-          {items.map((item) => (
-            <li key={item.title} className="flex min-h-0">
-              <div className="card flex h-full w-full flex-col space-y-3">
-                <h3 className="text-lg font-semibold text-gray-950 md:text-xl">
-                  {item.title}
+    <section className="bg-page py-20">
+      <Container>
+        <div className="mx-auto w-full max-w-[1100px] text-left">
+          <div className="space-y-5 md:space-y-6">
+            <AccentPill>OUR APPROACH</AccentPill>
+            <h2
+              className={`${playfair.className} text-accent-gradient max-w-4xl text-pretty text-[2.75rem] font-medium leading-tight tracking-tight md:text-[3rem]`}
+            >
+              Modern Methods. Proven Results.
+            </h2>
+          </div>
+
+          <div className="mt-10 flex flex-col gap-10 lg:mt-12 lg:flex-row lg:items-start lg:gap-12">
+            <div className="w-full shrink-0 lg:w-[40%] lg:max-w-[40%]">
+              <div className="rounded-[4px] p-px accent-ring-bg">
+                <div className="rounded-[3px] bg-page p-6">
+                <h3
+                  className={`${playfair.className} text-accent-gradient text-[22px] font-normal leading-snug`}
+                >
+                  How We Source
                 </h3>
-                <p className="text-base font-normal leading-relaxed text-gray-500">
-                  {item.description}
+                <p className="mt-4 text-[15px] font-normal leading-relaxed text-muted">
+                  We combine modern digital recruitment methods with proven traditional
+                  sourcing techniques and a trusted network of research partners —
+                  ensuring consistent quality across every project type and audience.
                 </p>
+                </div>
               </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Section>
+            </div>
+
+            <div className="min-w-0 flex-1 space-y-8">
+              <ul className="list-none space-y-8">
+                {items.map((item) => (
+                  <li key={item.title}>
+                    <div className="flex gap-3">
+                      <ArrowRight
+                        className="mt-0.5 shrink-0"
+                        size={20}
+                        stroke="url(#qualrecruiter-accent-gradient)"
+                        strokeWidth={2}
+                        aria-hidden
+                      />
+                      <div className="min-w-0">
+                        <p className="text-lg font-semibold leading-snug text-accent-gradient">
+                          {item.title}
+                        </p>
+                        <p className="mt-1.5 text-sm font-normal leading-relaxed text-white">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </section>
   );
 }

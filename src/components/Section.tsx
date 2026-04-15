@@ -10,8 +10,8 @@ type SectionProps = {
 };
 
 const toneClasses: Record<SectionTone, string> = {
-  default: "bg-white",
-  muted: "bg-gray-50",
+  default: "bg-page",
+  muted: "bg-surface",
 };
 
 export function Section({ children, tone = "default", id }: SectionProps) {

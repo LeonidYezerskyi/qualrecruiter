@@ -1,55 +1,84 @@
-import { Section } from "./Section";
+import { Fragment } from "react";
+import { FileText, Filter, UserPlus } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { Playfair_Display } from "next/font/google";
+import { AccentPill } from "./AccentPill";
+import { Container } from "./Container";
 
-const steps = [
-  {
-    number: "01",
-    title: "Share your brief",
-    description: "Tell us who you need and what you're researching.",
-  },
-  {
-    number: "02",
-    title: "We recruit & screen",
-    description: "We find and vet participants using proven methods.",
-  },
-  {
-    number: "03",
-    title: "You run the research",
-    description: "Get qualified participants ready to engage.",
-  },
-] as const;
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700"],
+});
+
+const steps: { icon: LucideIcon; label: string }[] = [
+  { icon: FileText, label: "Share Brief" },
+  { icon: Filter, label: "Recruit & Screen" },
+  { icon: UserPlus, label: "Run Research" },
+];
+
+function StepCircle({ icon: Icon, label }: { icon: LucideIcon; label: string }) {
+  return (
+    <div className="flex w-[200px] flex-col items-center">
+      <div className="step-circle flex items-center justify-center">
+        <Icon className="text-muted" size={56} strokeWidth={1.5} aria-hidden />
+      </div>
+      <p className="mt-4 text-center text-2xl font-medium leading-snug text-white">
+        {label}
+      </p>
+    </div>
+  );
+}
 
 export function HowItWorksSection() {
   return (
-    <Section>
-      <div className="flex flex-col space-y-10 md:space-y-14">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-gray-950 md:text-4xl">
-            How it works
-          </h2>
-        </div>
-        <ol className="grid list-none items-stretch gap-0 md:grid-cols-3">
-          {steps.map((step, index) => (
-            <li
-              key={step.number}
-              className={`flex h-full flex-col space-y-3 py-10 first:pt-0 last:pb-0 md:space-y-4 md:py-0 ${
-                index > 0
-                  ? "border-t border-gray-100/90 pt-10 md:border-t-0 md:border-l md:border-gray-200/60 md:pl-10 md:pt-0 lg:pl-12"
-                  : ""
-              }`}
+    <section className="bg-page py-20">
+      <Container>
+        <div className="mx-auto w-full max-w-[1100px] text-left">
+          <div className="space-y-5 md:space-y-6">
+            <AccentPill variant="solid">HOW IT WORKS</AccentPill>
+            <h2
+              className={`${playfair.className} text-accent-gradient max-w-4xl text-pretty text-[2.75rem] font-medium leading-tight tracking-tight md:text-[3rem]`}
             >
-              <span className="text-sm font-medium tabular-nums tracking-[0.2em] text-gray-400">
-                {step.number}
-              </span>
-              <h3 className="text-lg font-semibold text-gray-950 md:text-xl">
-                {step.title}
-              </h3>
-              <p className="max-w-[42rem] text-base font-normal leading-relaxed text-gray-500 md:max-w-none">
-                {step.description}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </Section>
+              From Brief to Fieldwork in Three Steps
+            </h2>
+            <p className="max-w-3xl text-pretty text-base font-normal leading-relaxed text-muted md:text-lg">
+              Our streamlined process gets your study off the ground quickly —
+              without sacrificing quality.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-10 flex max-w-md flex-col items-center gap-10 md:max-w-none md:flex-row md:justify-center md:gap-0">
+            {steps.map((step, index) => (
+              <Fragment key={step.label}>
+                {index > 0 && (
+                  <>
+                    <span
+                      className="block text-4xl leading-none text-accent-gradient md:hidden"
+                      aria-hidden
+                    >
+                      ↓
+                    </span>
+                    <span
+                      className="hidden h-[200px] shrink-0 items-center self-center px-2 text-4xl leading-none text-accent-gradient md:inline-flex lg:px-3"
+                      aria-hidden
+                    >
+                      →
+                    </span>
+                  </>
+                )}
+                <StepCircle icon={step.icon} label={step.label} />
+              </Fragment>
+            ))}
+          </div>
+
+          <p className="mt-12 max-w-3xl text-pretty text-base font-normal leading-relaxed text-muted md:text-lg">
+            Most projects move from briefing to confirmed participants within days.
+            We handle the complexity so your team can focus on what matters —
+            running great research.
+          </p>
+        </div>
+      </Container>
+    </section>
   );
 }

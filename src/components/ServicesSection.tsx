@@ -1,42 +1,103 @@
+import {
+  BriefcaseBusiness,
+  Home,
+  MessagesSquare,
+  Mic,
+  UserSearch,
+  Users,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { Playfair_Display } from "next/font/google";
+import { AccentPill } from "./AccentPill";
 import { Section } from "./Section";
 
-const services = [
-  "In-depth interviews (IDIs)",
-  "Focus groups",
-  "Ethnographic studies",
-  "Online communities & diary studies",
-  "Mystery shopping",
-  "In-home usage tests (IHUTs)",
-  "Shop-alongs",
-] as const;
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700"],
+});
+
+const services: { icon: LucideIcon; title: string; description: string }[] = [
+  {
+    icon: Mic,
+    title: "In-Depth Interviews",
+    description:
+      "IDIs with carefully screened participants who meet your exact profile — every time.",
+  },
+  {
+    icon: Users,
+    title: "Focus Groups",
+    description:
+      "Recruit engaged, qualified participants for in-person or online group sessions.",
+  },
+  {
+    icon: Home,
+    title: "Ethnographic & IHUTs",
+    description:
+      "Ethnographic studies, in-home usage tests, and shop-alongs with real-world participants.",
+  },
+  {
+    icon: MessagesSquare,
+    title: "Online Communities & Diaries",
+    description:
+      "Recruit members for longitudinal diary studies and online communities that deliver depth.",
+  },
+  {
+    icon: UserSearch,
+    title: "Mystery Shopping",
+    description:
+      "Identify and place the right mystery shoppers for retail, service, and brand experience research.",
+  },
+  {
+    icon: BriefcaseBusiness,
+    title: "B2B Recruitment",
+    description:
+      "Hard-to-reach professionals, executives, and niche business audiences — we find them.",
+  },
+];
 
 export function ServicesSection() {
   return (
-    <Section id="services" tone="muted">
-      <div className="flex flex-col space-y-10 md:space-y-12">
-        <div className="mx-auto max-w-3xl space-y-4 text-center md:space-y-5">
-          <p className="text-sm font-medium tracking-[0.12em] text-primary/90">
-            What we do
-          </p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-gray-950 md:text-4xl">
-            We recruit participants for every type of qualitative research
+    <Section id="services" tone="default">
+      <div className="mx-auto w-full max-w-[1100px]">
+        <div className="flex flex-col space-y-12 md:space-y-14">
+        <div className="max-w-3xl space-y-5 text-left md:space-y-6">
+          <AccentPill variant="solid" innerClassName="text-[12px]">
+            WHAT WE DO
+          </AccentPill>
+          <h2
+            className={`${playfair.className} text-accent-gradient max-w-3xl text-pretty text-[2.75rem] font-medium leading-tight tracking-tight md:text-[3rem]`}
+          >
+            Qualitative Recruitment, Across Every Method
           </h2>
-          <p className="mx-auto max-w-[44rem] text-pretty text-base font-normal leading-relaxed text-gray-500 md:text-lg">
-            From everyday consumers to hard-to-reach audiences, we deliver
-            participants that match your exact criteria.
+          <p className="max-w-2xl text-pretty text-base font-normal leading-relaxed text-muted md:text-lg">
+            Whether B2C or B2B, online or in-person — we specialize in recruiting
+            participants for all types of qualitative research.
           </p>
         </div>
-        <ul className="grid grid-cols-2 items-stretch gap-5 md:grid-cols-3 md:gap-6 lg:gap-10">
-          {services.map((label) => (
-            <li key={label} className="flex min-h-0">
-              <div className="card flex h-full min-h-[4.5rem] w-full items-center md:min-h-[5rem]">
-                <span className="text-left text-base font-medium leading-snug text-gray-900">
-                  {label}
-                </span>
+
+        <ul className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 md:gap-y-12 lg:gap-y-14">
+          {services.map(({ icon: Icon, title, description }) => (
+            <li key={title} className="flex flex-col items-start space-y-4 text-left">
+              <Icon
+                className="shrink-0"
+                size={32}
+                stroke="url(#qualrecruiter-accent-gradient)"
+                strokeWidth={1.5}
+                aria-hidden
+              />
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold text-accent-gradient md:text-xl">
+                  {title}
+                </h3>
+                <p className="text-base font-normal leading-relaxed text-muted md:text-[17px]">
+                  {description}
+                </p>
               </div>
             </li>
           ))}
         </ul>
+        </div>
       </div>
     </Section>
   );

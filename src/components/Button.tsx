@@ -18,18 +18,29 @@ export type ButtonProps = SharedButtonProps &
     | ({ href?: undefined } & ButtonHTMLAttributes<HTMLButtonElement>)
   );
 
-const variantClasses: Record<ButtonVariant, string> = {
-  primary:
-    "rounded-xl bg-primary px-7 py-3.5 text-base text-white shadow-soft ring-1 ring-white/10 transition-all duration-200 ease-out hover:bg-primary/92 hover:shadow-soft-lg active:scale-[0.98] active:bg-[#172554] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
-  secondary:
-    "rounded-xl border border-gray-200/90 bg-white/90 px-7 py-3.5 text-base text-gray-800 shadow-soft transition-all duration-200 ease-out hover:border-gray-300 hover:bg-white hover:shadow-soft-lg active:scale-[0.98] active:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-400",
-};
+const focusRing =
+  "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c9a042]";
+
+const primaryClasses =
+  `inline-flex items-center justify-center rounded-[4px] text-center accent-btn-primary ` +
+  `px-[28px] py-[14px] text-base font-semibold leading-none text-ink shadow-none ` +
+  `active:scale-[0.98] ${focusRing}`;
+
+/** Ghost / outline — flat gold border + gold text (distinct from gradient primary) */
+const secondaryClasses =
+  `inline-flex items-center justify-center rounded-[4px] border-2 border-solid border-gold ` +
+  `bg-transparent px-[28px] py-[14px] text-center text-base font-semibold leading-none text-gold ` +
+  `shadow-none transition-colors duration-200 ease-out hover:bg-gold/[0.08] ` +
+  `active:scale-[0.98] ${focusRing}`;
 
 export function Button(props: ButtonProps) {
   const { variant = "primary", className = "", children, ...rest } = props;
-  const base =
-    "inline-flex items-center justify-center text-center font-semibold disabled:pointer-events-none disabled:opacity-50";
-  const cn = `${base} ${variantClasses[variant]} ${className}`.trim();
+  const base = "text-center disabled:pointer-events-none disabled:opacity-50";
+  const variantCn =
+    variant === "secondary"
+      ? `${base} ${secondaryClasses}`
+      : `${base} ${primaryClasses}`;
+  const cn = `${variantCn} ${className}`.trim();
 
   if ("href" in rest && rest.href) {
     const { href, ...anchorProps } = rest;

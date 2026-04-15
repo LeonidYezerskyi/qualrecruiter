@@ -1,4 +1,15 @@
-import { Section } from "./Section";
+import Image from "next/image";
+import { Playfair_Display } from "next/font/google";
+import { AccentPill } from "./AccentPill";
+import { Container } from "./Container";
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700"],
+});
+
+const BG_IMAGE = "/images/hero-bg.jpg";
 
 const features = [
   {
@@ -25,36 +36,49 @@ const features = [
 
 export function WhyQualRecruiterSection() {
   return (
-    <Section tone="muted">
-      <div className="flex flex-col space-y-10 md:space-y-12">
-        <div className="mx-auto max-w-3xl space-y-4 text-center md:space-y-5">
-          <p className="text-sm font-medium tracking-[0.12em] text-primary/90">
-            Why QualRecruiter
-          </p>
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-gray-950 md:text-4xl">
-            Fewer no-shows. Better conversations. Stronger insights.
-          </h2>
-          <p className="mx-auto max-w-[44rem] text-pretty text-base font-normal leading-relaxed text-gray-500 md:text-lg">
-            We don&apos;t just fill quotas. We carefully match participants to your
-            research goals, using rigorous screening and a commitment to clear
-            communication at every stage of the project.
-          </p>
-        </div>
-        <ul className="grid grid-cols-1 items-stretch gap-5 md:grid-cols-2 md:gap-6 lg:gap-10">
-          {features.map((feature) => (
-            <li key={feature.title} className="flex min-h-0">
-              <div className="card flex h-full w-full flex-col space-y-3">
-                <h3 className="text-lg font-semibold text-gray-950 md:text-xl">
-                  {feature.title}
-                </h3>
-                <p className="text-base font-normal leading-relaxed text-gray-500">
-                  {feature.description}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
+    <section className="relative overflow-hidden py-20">
+      <Image
+        src={BG_IMAGE}
+        alt="Professionals in a meeting"
+        fill
+        className="object-cover object-center saturate-[0.88] contrast-[0.98]"
+        sizes="100vw"
+      />
+      <div className="photo-scrim absolute inset-0" aria-hidden />
+      <div className="relative z-10">
+        <Container>
+          <div className="mx-auto w-full max-w-[1100px] space-y-10 text-left md:space-y-12">
+            <div className="space-y-5 md:space-y-6">
+              <AccentPill>WHY QUALRECRUITER</AccentPill>
+              <h2
+                className={`${playfair.className} text-accent-gradient max-w-4xl text-pretty text-[2.75rem] font-medium leading-tight tracking-tight md:text-[3rem]`}
+              >
+                Fewer no-shows. Better conversations. Stronger insights.
+              </h2>
+              <p className="max-w-[60%] text-pretty text-base font-semibold leading-relaxed text-white md:text-lg">
+                We don&apos;t just fill quotas. We carefully match participants to your
+                research goals, using rigorous screening and a commitment to clear
+                communication at every stage of the project.
+              </p>
+            </div>
+
+            <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {features.map((feature) => (
+                <li key={feature.title}>
+                  <div className="flex h-full flex-col space-y-3 rounded-[4px] border border-white/[0.08] bg-[#333333] p-6 shadow-none">
+                    <h3 className="text-lg font-semibold text-accent-gradient">
+                      {feature.title}
+                    </h3>
+                    <p className="text-[15px] font-normal leading-relaxed text-white">
+                      {feature.description}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Container>
       </div>
-    </Section>
+    </section>
   );
 }

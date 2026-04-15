@@ -3,22 +3,42 @@
 @tailwind utilities;
 
 /**
- * Design system — QualRecruiter (qualitative research recruitment)
- * Tokens: tailwind.config → primary, accent; grays for text/surfaces.
+ * QualRecruiter — dark theme (charcoal page ~#1A1A1A, deeper surface band)
+ * page / surface / elevated / gold / ink / muted
  */
 
 @layer base {
+  /**
+   * Mirror tailwind.config theme.extend.colors (theme() here trips Tailwind
+   * IntelliSense: extended palette is not merged for CSS theme() validation).
+   */
   :root {
-    --color-text-primary: theme("colors.gray.900");
-    --color-text-secondary: theme("colors.gray.600");
-    --color-bg: theme("colors.white");
-    --color-bg-muted: theme("colors.gray.50");
-    --space-stack-sm: theme("spacing.4");
-    --space-stack-md: theme("spacing.6");
-    --space-stack-lg: theme("spacing.8");
-    --space-stack-xl: theme("spacing.12");
-    --space-section-y: theme("spacing.16");
-    --space-section-y-md: theme("spacing.24");
+    --color-page: #1a1a1a;
+    --color-surface: #151515;
+    --color-elevated: #242424;
+    --color-gold: #c9a042;
+    --color-ink: #111111;
+    --color-muted: #cccccc;
+    /** Matches How it works — step ring (135° gold sweep) */
+    --accent-grad: linear-gradient(
+      135deg,
+      #8b6914,
+      #c9a042,
+      #f0d080,
+      #c9a042,
+      #8b6914
+    );
+    --accent-grad-y: linear-gradient(
+      to bottom,
+      #8b6914,
+      #c9a042,
+      #f0d080,
+      #c9a042,
+      #8b6914
+    );
+    /** Section kicker pills — solid drab gold fill, pale label (reference) */
+    --section-pill-bg: #4b4516;
+    --section-pill-text: #ebe8e0;
   }
 
   html {
@@ -26,36 +46,80 @@
   }
 
   body {
-    @apply min-h-screen bg-white text-gray-900 antialiased;
+    @apply min-h-screen bg-page font-sans text-muted antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
   }
 
   h1 {
-    @apply text-4xl font-semibold leading-[1.1] tracking-tight text-gray-900 md:text-5xl;
+    @apply text-4xl font-medium leading-tight tracking-tight text-white md:text-5xl;
   }
 
   h2 {
-    @apply text-3xl font-semibold leading-[1.15] tracking-tight text-gray-900 md:text-4xl;
+    @apply text-3xl font-semibold leading-tight tracking-tight text-white md:text-4xl;
   }
 
   h3 {
-    @apply text-xl font-semibold leading-snug tracking-tight text-gray-900;
+    @apply text-xl font-semibold leading-snug tracking-tight text-white;
   }
 
   p {
-    @apply text-base leading-relaxed text-gray-600 md:text-lg;
+    @apply text-base leading-relaxed text-muted md:text-lg;
   }
 }
 
 @layer components {
-  /** Inline / body links — use className="link" where brand styling is wanted */
-  .link {
-    @apply text-accent transition-colors duration-200 hover:text-primary;
+  /**
+   * Section labels: WHAT WE DO, HOW IT WORKS, GET STARTED, …
+   * Sans-serif inherits from body (Inter).
+   */
+  .section-pill {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    color: var(--section-pill-text);
+    background-color: var(--section-pill-bg);
+    font-family: inherit;
   }
 
-  /** Vertical rhythm inside sections (choose one per block) */
+  @media (min-width: 640px) {
+    .section-pill {
+      font-size: 12px;
+      padding: 6px 16px;
+    }
+  }
+
+  /**
+   * Full-bleed photo sections (Hero, Why, Results) — neutral charcoal scrim.
+   * Slightly grayer than slate/blue so warm photos don’t read navy.
+   */
+  .photo-scrim {
+    background: linear-gradient(
+      to bottom,
+      rgba(30, 30, 30, 0.76) 0%,
+      rgba(24, 24, 24, 0.84) 45%,
+      rgba(20, 20, 20, 0.88) 100%
+    );
+  }
+
+  .link {
+    background-image: var(--accent-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: opacity 0.2s ease-out;
+  }
+
+  .link:hover {
+    opacity: 0.85;
+  }
+
   .stack {
     @apply flex flex-col space-y-6;
   }
@@ -64,11 +128,96 @@
     @apply flex flex-col space-y-8;
   }
 
-  /**
-   * Cards — refined border, soft custom shadow, calm hover lift
-   */
+  /** Dark cards — subtle edge, no heavy border */
   .card {
-    @apply rounded-2xl border border-gray-100/90 bg-white p-6 shadow-soft transition-all duration-200 ease-out hover:border-gray-200/90 hover:shadow-soft-lg md:p-8;
+    @apply rounded-xl border border-white/[0.06] bg-elevated p-6 shadow-soft transition-all duration-200 ease-out hover:border-white/10 hover:shadow-soft-lg md:p-8;
+  }
+
+  /**
+   * How it works — step ring: dark fill + gold gradient border (no solid gold stroke)
+   */
+  .step-circle {
+    box-sizing: border-box;
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 13.5px solid transparent;
+    background:
+      linear-gradient(#161616, #161616) padding-box,
+      var(--accent-grad) border-box;
+    background-origin: padding-box, border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  /** Gold → same diagonal sweep as step circles (text, fills, 1px rings) */
+  .text-accent-gradient {
+    background-image: var(--accent-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .accent-ring-bg {
+    background-image: var(--accent-grad);
+  }
+
+  .accent-btn-primary {
+    background-image: var(--accent-grad);
+    color: var(--color-ink);
+    transition: filter 0.2s ease-out, transform 0.2s ease-out;
+  }
+
+  .accent-btn-primary:hover {
+    filter: brightness(0.92);
+  }
+
+  .accent-btn-primary:active {
+    filter: brightness(0.85);
+  }
+
+  /** Vertical accent bar (e.g. testimonial) */
+  .accent-bar-y {
+    width: 4px;
+    min-height: 100%;
+    align-self: stretch;
+    border-radius: 1px;
+    background-image: var(--accent-grad-y);
+  }
+
+  /** Left edge on cards — gradient strip */
+  .card-accent-left {
+    position: relative;
+  }
+
+  .card-accent-left::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    border-radius: 4px 0 0 4px;
+    background-image: var(--accent-grad-y);
+    pointer-events: none;
+  }
+
+  /** Testimonial stats — vertical rule between columns (md+) */
+  .stat-col-divider {
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .stat-col-divider:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0.25rem;
+      bottom: 0.25rem;
+      width: 1px;
+      background-image: var(--accent-grad-y);
+      opacity: 0.35;
+    }
   }
 }
 
